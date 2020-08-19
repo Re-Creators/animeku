@@ -1,25 +1,26 @@
 package com.richardo.animeku.adapter
 
-import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.example.animeku.OngoingListQuery
-import com.example.animeku.SortListQuery
 import com.richardo.animeku.utilities.Utils
-import kotlinx.android.synthetic.main.ongoing_item.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 @BindingAdapter("imageFromUrl")
 fun bindImageFromUrl(view : ImageView, url : String?){
+    val color = Utils.getRandomColorS(view)
     if(!url.isNullOrEmpty()){
-        val color = Utils.getRandomColorS(view)
         Glide.with(view.context)
             .load(url)
             .placeholder(ColorDrawable(color))
+            .into(view)
+    }else{
+        Glide.with(view.context)
+            .load(ColorDrawable(color))
             .into(view)
     }
 }

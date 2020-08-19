@@ -3,6 +3,7 @@ package com.richardo.animeku.viewholder
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.animeku.AnimeByGenreQuery
@@ -16,6 +17,8 @@ import com.richardo.animeku.genre.GenreFragmentDirections
 import com.richardo.animeku.home.HomeFragmentDirections
 import com.richardo.animeku.listAll.ListAllFragmentDirections
 import com.richardo.animeku.search.SearchFragmentDirections
+import com.richardo.animeku.utilities.Constants
+import com.richardo.animeku.utilities.Utils
 
 class TagViewHolder(
     private val binding: TagItemBinding,
@@ -31,6 +34,20 @@ class TagViewHolder(
 
     fun bindItemTag(currentData : SortListQuery.Medium){
         binding.apply {
+
+            if (from == Constants.HOME) {
+                viewgroupTag.apply {
+                    val params = ConstraintLayout.LayoutParams(
+                        Utils.convertDpIntoPx(170f, this),
+                        ConstraintLayout.LayoutParams.WRAP_CONTENT
+                    )
+
+                    params.marginStart = Utils.convertDpIntoPx(8f, this)
+                    params.marginEnd = Utils.convertDpIntoPx(8f, this)
+
+                    layoutParams = params
+                }
+            }
             val data = Tag(
                 id = currentData.id,
                 imgUrl = currentData.coverImage?.extraLarge,
@@ -70,10 +87,24 @@ class TagViewHolder(
 
     fun bindItemRecommendation(currentData: DetailAnimeQuery.Node2){
         binding.apply {
+
+            viewgroupTag.apply {
+                val params = ConstraintLayout.LayoutParams(
+                    Utils.convertDpIntoPx(170f, this),
+                    ConstraintLayout.LayoutParams.WRAP_CONTENT
+                )
+
+                params.marginStart = Utils.convertDpIntoPx(8f, this)
+                params.marginEnd = Utils.convertDpIntoPx(8f, this)
+
+                layoutParams = params
+            }
+
+
             val data = Tag(
                 id = currentData.mediaRecommendation!!.id,
-                imgUrl = currentData.mediaRecommendation?.coverImage?.extraLarge,
-                name = currentData.mediaRecommendation?.title?.romaji,
+                imgUrl = currentData.mediaRecommendation.coverImage?.extraLarge,
+                name = currentData.mediaRecommendation.title?.romaji,
                 rating = null
             )
             tag = data
@@ -84,28 +115,28 @@ class TagViewHolder(
 
     private fun navigateToDetail(view : View, id : Int){
         when(from){
-            "List All" -> {
+            Constants.LIST_ALL -> {
                 val action =
                     ListAllFragmentDirections.actionListAllFragmentToDetailFragment(
                         id
                     )
                 view.findNavController().navigate(action)
             }
-            "Genre" -> {
+            Constants.GENRE -> {
                 val action = GenreFragmentDirections.actionGenreFragmentToDetailFragment(id)
                 view.findNavController().navigate(action)
             }
-            "Search" -> {
+            Constants.SEARCH -> {
                 view.findNavController().navigate(
                     SearchFragmentDirections
                     .actionSearchFragmentToDetailFragment(id))
             }
-            "Home" -> {
+            Constants.HOME -> {
                 view.findNavController().navigate(
                     HomeFragmentDirections
                     .actionHomeFragmentToDetailFragment(id))
             }
-            "Detail" -> {
+            Constants.DETAIL -> {
                 view.findNavController().navigate(
                     DetailFragmentDirections.actionDetailFragmentSelf(id)
                 )

@@ -1,38 +1,41 @@
 package com.richardo.animeku.home
 
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.animeku.OngoingListQuery
-import com.richardo.animeku.R
 import com.richardo.animeku.viewholder.OngoingViewHolder
-import kotlinx.android.synthetic.main.ongoing_item.view.*
-import java.text.SimpleDateFormat
-import java.util.*
 
-class OngoingAdapter(private val from : String) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
-    var data = listOf<OngoingListQuery.Medium>()
-    set(value) {
-        field = value
-        notifyDataSetChanged()
-    }
+class OngoingAdapter(private val from : String)
+    : ListAdapter<OngoingListQuery.Medium, RecyclerView.ViewHolder>(OngoingDiff()){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return OngoingViewHolder.create(parent, from)
     }
 
-    override fun getItemCount() = data.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val currentData = data[position]
-        if (currentData != null){
-            (holder as OngoingViewHolder).bind(currentData)
-        }
+        val currentData = getItem(position)
+        (holder as OngoingViewHolder).bind(currentData)
     }
 
+}
+
+private class OngoingDiff : DiffUtil.ItemCallback<OngoingListQuery.Medium>(){
+    override fun areItemsTheSame(
+        oldItem: OngoingListQuery.Medium,
+        newItem: OngoingListQuery.Medium
+    ): Boolean {
+        return newItem.id == oldItem.id
+    }
+
+    override fun areContentsTheSame(
+        oldItem: OngoingListQuery.Medium,
+        newItem: OngoingListQuery.Medium
+    ): Boolean {
+        return oldItem == newItem
+    }
 
 }

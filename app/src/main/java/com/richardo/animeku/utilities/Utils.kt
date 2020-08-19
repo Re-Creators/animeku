@@ -26,4 +26,9 @@ object Utils {
         val formatter = SimpleDateFormat("yyyyMMdd")
         return formatter.format(date).toInt()
     }
+
+    fun convertDpIntoPx(dp : Float, view : View) : Int {
+        val scale = view.resources.displayMetrics.density
+        return (dp * scale + 0.5f).toInt()
+    }
 }

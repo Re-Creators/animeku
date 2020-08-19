@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import com.richardo.animeku.*
+import com.richardo.animeku.utilities.Constants
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlin.math.abs
 import kotlin.math.log
@@ -42,15 +43,15 @@ class HomeFragment : Fragment(){
         Log.d("HomeFragment", "Created")
 
         // Adapter Recyclerview
-        val popAdapter  = TagAdapter("home")
+        val popAdapter  = TagAdapter(Constants.HOME)
         popular_rv.adapter = popAdapter
 
-        val trendAdapter = TagAdapter("home")
+        val trendAdapter = TagAdapter(Constants.HOME)
         trending_rv.adapter = trendAdapter
 
         val upcomingAdapter = UpcomingAdapter()
 
-        val ongoingAdapter = OngoingAdapter("Home")
+        val ongoingAdapter = OngoingAdapter(Constants.HOME)
         ongoing_rv.adapter = ongoingAdapter
 
 
@@ -150,7 +151,7 @@ class HomeFragment : Fragment(){
     private fun subscribeUiOngoing(adapter: OngoingAdapter){
         viewModel.ongoingList.observe(viewLifecycleOwner, Observer { list ->
             if (list != null){
-                adapter.data = list
+                adapter.submitList(list)
                 ongoing_group.visibility = View.VISIBLE
             }
         })

@@ -89,9 +89,6 @@ class DetailFragment : Fragment() {
             adapter = relationAdapter
         }
 
-        val anim = DetailAnimeQuery.Relations
-
-
         viewModelDetail.anime.observe(viewLifecycleOwner, Observer {detailAnime ->
             if (detailAnime.characters?.edges != null){
                 // Melakukan filter pada data class voice actor
