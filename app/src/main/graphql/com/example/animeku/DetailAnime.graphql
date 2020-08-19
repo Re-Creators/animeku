@@ -1,0 +1,81 @@
+query DetailAnime($id : Int){
+    Media(id: $id){
+        title {
+            romaji
+        }
+        startDate {
+            year
+            month
+            day
+        }
+        bannerImage
+        coverImage{
+            extraLarge
+        }
+        description
+        averageScore
+        format
+        duration
+        episodes
+        status
+        genres
+        characters(page : 1, sort:[ROLE]){
+            edges{
+                node{
+                    id
+                    name {
+                        first,
+                        full
+                    }
+                    image {
+                        large
+                    }
+                }
+                role
+                voiceActors(language : JAPANESE, sort: [FAVOURITES_DESC]){
+                    id
+                    name{
+                        full
+                    }
+                    image{
+                        large
+                    }
+                }
+            }
+        }
+        studios(isMain:true){
+            nodes{
+                name
+            }
+        }
+        recommendations(page:1, sort:[RATING_DESC]){
+            nodes{
+                mediaRecommendation{
+                    id
+                    title {
+                        romaji
+                    }
+                    coverImage{
+                        extraLarge
+                    }
+                    averageScore
+                }
+            }
+        }
+        relations{
+            edges{
+                id
+                relationType
+                node {
+                    title {
+                        romaji
+                    }
+                    coverImage{
+                        extraLarge
+                    }
+                    averageScore
+                }
+            }
+        }
+    }
+}

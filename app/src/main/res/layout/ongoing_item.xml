@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="data"
+            type="com.example.animeku.OngoingListQuery.Medium" />
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:onClick="@{clickListener}">
+
+        <TextView
+            android:id="@+id/tv_ongoing_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorAccent"
+            android:elevation="3dp"
+            android:fontFamily="@font/poppins"
+            android:padding="6dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp"
+            app:setEpisodeOngoing="@{data}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Wednesday" />
+
+        <TextView
+            android:id="@+id/tv_ongoing_episode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/bgLightBlue"
+            android:elevation="3dp"
+            android:fontFamily="@font/poppins"
+            android:padding="6dp"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:text='@{"Episode " + data.nextAiringEpisode.episode}'
+            app:layout_constraintBottom_toBottomOf="@+id/cardView3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Episode 123" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView3"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/img_ongoing_cover"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:imageFromUrl="@{data.coverImage.extraLarge}"
+                tools:srcCompat="@drawable/kaguya_sama" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_ongoing_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="1dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:maxLines="2"
+            tools:text="TextView"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:text="@{data.title.romaji}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_ongoing_episode" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.richardo.animeku.home.HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment"
+            app:enterAnim="@anim/slide_in_up"
+            app:exitAnim="@anim/slide_out_down"
+            app:popExitAnim="@anim/slide_out_down" />
+        <action
+            android:id="@+id/action_homeFragment_to_listAllFragment"
+            app:destination="@id/listAllFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.richardo.animeku.detail.DetailFragment"
+        android:label="Detail Anime"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="animeId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_detailFragment_to_voiceActorFragment"
+            app:destination="@id/voiceActorFragment"
+            app:enterAnim="@anim/slide_in_up"
+            app:exitAnim="@anim/slide_out_down"
+            app:popExitAnim="@anim/slide_out_down" />
+        <action
+            android:id="@+id/action_detailFragment_self"
+            app:destination="@id/detailFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/listAllFragment"
+        android:name="com.richardo.animeku.listAll.ListAllFragment"
+        android:label="{tag}"
+        tools:layout="@layout/fragment_list_all">
+        <argument
+            android:name="tag"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_listAllFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/voiceActorFragment"
+        android:name="com.richardo.animeku.profile.ProfileFragment"
+        android:label="{profile} Profile"
+        tools:layout="@layout/fragment_profile" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_voiceActorFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+        <argument
+            android:name="profile"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_voiceActorFragment_self"
+            app:destination="@id/voiceActorFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/genreFragment"
+        android:name="com.richardo.animeku.genre.GenreFragment"
+        android:label="fragment_genre"
+        tools:layout="@layout/fragment_genre" >
+        <action
+            android:id="@+id/action_genreFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.richardo.animeku.search.SearchFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_searchFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_voiceActorFragment"
+            app:destination="@id/voiceActorFragment" />
+    </fragment>
+</navigation>

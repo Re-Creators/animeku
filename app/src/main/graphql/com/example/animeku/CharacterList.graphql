@@ -1,0 +1,17 @@
+query CharacterList($keyword : String = null, $page : Int = 1, $perPage : Int = 20){
+    Page(page:$page, perPage:$perPage){
+        pageInfo {
+            lastPage
+        }
+
+        characters(search:$keyword){
+            id
+            name{
+                full
+            }
+            image{
+                large
+            }
+        }
+    }
+}

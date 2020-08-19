@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="voiceActor"
+            type="com.example.animeku.VoiceActorsProfileQuery.Edge" />
+        <variable
+            name="animeClickListener"
+            type="android.view.View.OnClickListener" />
+        <variable
+            name="characterClickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp">
+
+        <ImageView
+            android:id="@+id/img_voice_anime"
+            android:layout_width="0dp"
+            android:layout_height="125dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
+            android:onClick="@{animeClickListener}"
+            app:imageFromUrl="@{voiceActor.media.get(0).coverImage.extraLarge}"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/img_voice_char"
+            android:layout_width="0dp"
+            android:layout_height="125dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
+            android:onClick="@{characterClickListener}"
+            app:imageFromUrl="@{voiceActor.node.image.large}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tv_voice_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/poppins"
+            android:maxLength="50"
+            android:textColor="@color/textLightBlue"
+            android:textSize="12sp"
+            android:text="@{voiceActor.media.get(0).title.romaji}"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toEndOf="@+id/img_voice_anime"
+            app:layout_constraintTop_toTopOf="@+id/img_voice_anime"
+            tools:text="Kakushigoto" />
+
+        <TextView
+            android:id="@+id/tv_voice_charname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/poppins"
+            android:textAlignment="textEnd"
+            android:textColor="@color/textLightBlue"
+            android:textSize="12sp"
+            android:text="@{voiceActor.node.name.full}"
+            app:layout_constraintEnd_toStartOf="@+id/img_voice_char"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toTopOf="@+id/img_voice_char"
+            tools:text="Hime Gotou" />
+
+        <TextView
+            android:id="@+id/tv_voice_role"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/shimmerBackground"
+            android:textSize="10sp"
+            android:text="@{voiceActor.role.toString()}"
+            app:layout_constraintBottom_toBottomOf="@+id/img_voice_anime"
+            app:layout_constraintStart_toStartOf="@+id/tv_voice_title"
+            tools:text="Main" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.25" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.75" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

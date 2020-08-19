@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#151c26</color>
+    <color name="colorPrimaryDark">#151c26</color>
+    <color name="colorAccent">#f1b814</color>
+    <color name="colorDark">#151c25</color>
+    <color name="textLightBlue">#566f9a</color>
+    <color name="bgLightBlue">#1a242f</color>
+    <color name="player_color">#000000</color>
+    <color name="shimmerBackground">#dddddd</color>
+    <color name="red">#F44336</color>
+    <color name="pink">#E91E63</color>
+    <color name="purple">#9C27B0</color>
+    <color name="lightBlue">#2196F3</color>
+    <color name="lightGreen">#4CAF50</color>
+    <color name="green">#009688</color>
+
+    <array name="placeholderColor">
+        <item>@color/colorAccent</item>
+        <item>@color/red</item>
+        <item>@color/pink</item>
+        <item>@color/green</item>
+        <item>@color/lightGreen</item>
+        <item>@color/lightBlue</item>
+        <item>@color/purple</item>
+    </array>
+</resources>

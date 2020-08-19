@@ -1,0 +1,18 @@
+query UpcomingList($date : FuzzyDateInt, $page : Int = 1, $perPage : Int = 10){
+    Page (page: $page, perPage: $perPage) {
+        pageInfo {
+            lastPage
+            hasNextPage
+            perPage
+        }
+        media (type:ANIME, startDate_greater:$date, sort:[POPULARITY_DESC]) {
+            id
+            title {
+                romaji
+            }
+            coverImage{
+                extraLarge
+            }
+        }
+    }
+}

@@ -1,0 +1,37 @@
+query VoiceActorsProfile($id : Int){
+    Staff(id : $id){
+        name {
+            full
+            native
+        }
+        image{
+            large
+        }
+        favourites
+        description(asHtml:true)
+        characters(page:1){
+            edges{
+                id
+                node{
+                    id
+                    name{
+                        full
+                    }
+                    image{
+                        large
+                    }
+                }
+                media{
+                    id
+                    title {
+                        romaji
+                    }
+                    coverImage{
+                        extraLarge
+                    }
+                }
+                role
+            }
+        }
+    }
+}

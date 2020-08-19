@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Animeku</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="most_popular">Most popular</string>
+    <string name="upcoming_next">Upcoming next</string>
+    <string name="text_home">Explore your\nFavorite Anime here!</string>
+    <string name="sample_overview">Tower of God centers around a boy called Twenty-Fifth Bam, who has spent most of his life trapped beneath a vast and mysterious Tower, with only his close friend, Rachel, to keep him company. When Rachel enters the Tower, Bam manages to open the door into it as well, and faces challenges at each floor of this tower as he tries to find his closest companion. (Source: Wikipedia)</string>
+    <string name="trending_now">Trending now</string>
+    <string name="type">Type : %1$s</string>
+    <string name="episodes">Episodes : %1$s</string>
+    <string name="status">Status : %1$s</string>
+    <string name="genres">Genres : %1$s</string>
+    <string name="duration">Duration : %1$s mins</string>
+    <string name="start_date">Start Date : %1$s</string>
+    <string name="studio">Studio : %1$s</string>
+    <string name="about"><![CDATA[%1$s]]></string>
+    <string name="home">Home</string>
+    <string name="genre">Genre</string>
+    <string name="sort_selected">Sort : %1$s</string>
+    <string name="ongoing">Ongoing</string>
+    <string name="characters">Characters</string>
+    <string name="details">Details</string>
+    <string name="voice_actors">Voice Actors</string>
+    <string name="overview">Overview</string>
+    <string name="title_example">Nodame Cantabille</string>
+    <string name="rating_sample">6.4</string>
+    <string name="episode_ongoing">Episode $1$d</string>
+    <string name="relation_heading">Relation</string>
+    <string name="heading_recomdation">Recommendations</string>
+</resources>

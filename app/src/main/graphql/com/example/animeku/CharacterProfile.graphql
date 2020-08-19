@@ -1,0 +1,28 @@
+query CharacterProfile($id : Int){
+    Character(id:$id){
+        name {
+            full
+            native
+        }
+        image{
+            large
+        }
+        favourites
+        description(asHtml:true)
+        media(page:1, perPage:15){
+            edges{
+                id
+                node{
+                    id
+                    title{
+                        romaji
+                    }
+                    coverImage{
+                        extraLarge
+                    }
+                }
+                characterRole
+            }
+        }
+    }
+}

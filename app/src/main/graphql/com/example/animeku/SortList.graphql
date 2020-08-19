@@ -1,0 +1,20 @@
+query SortList($page : Int, $sortType : MediaSort, $keyword : String = null, , $perPage : Int = 10){
+    Page (page: $page, perPage: $perPage) {
+        pageInfo {
+            lastPage
+            currentPage
+            hasNextPage
+        }
+        media (type:ANIME, sort:[$sortType], search:$keyword) {
+            id
+            title {
+                romaji
+            }
+            coverImage {
+                extraLarge
+            }
+            averageScore
+
+        }
+    }
+}
